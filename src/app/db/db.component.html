@@ -1,0 +1,24 @@
+<div *ngFor="let field of formFields; let i = index">
+  <label>{{ field.label }}</label>
+  <ng-container [ngSwitch]="field.type"> <!--- determines which form field to render based on that value.-->
+    <input *ngSwitchCase="'text'" [type]="field.type" [(ngModel)]="field.initialValue" (input)="onFieldValueChange($event.target.value, i)">
+    <input *ngSwitchCase="'number'" type="number" [(ngModel)]="field.initialValue" (input)="onFieldValueChange($event.target.value, i)">
+    <div *ngSwitchCase="'checkbox'">
+      <label *ngFor="let option of field.options">
+        <input type="checkbox" [(ngModel)]="option.value" (change)="onFieldValueChange(option.value, i)">
+        {{ option.label }}
+      </label>
+    </div>
+    <div *ngSwitchCase="'radio'">
+      <label *ngFor="let option of field.options">
+        <input type="radio" name="{{ field.name }}" [value]="option.value" [(ngModel)]="field.initialValue" (change)="onFieldValueChange(option.value, i)">
+        {{ option.label }}
+      </label>
+    </div>
+    <select *ngSwitchCase="'select'" [(ngModel)]="field.initialValue" (change)="onFieldValueChange($event.target.value, i)">  <!----When the user selects an option, it triggers the onFieldValueChange method, passing the new selected value ($event.target.value) and the index i of the current field in the array of fields.----->
+      <option *ngFor="let option of field.options" [value]="option.value">{{ option.label }}</option>
+    </select>
+  </ng-container>
+</div>
+
+<button (click) = "onSubmit()" class="custom-button">Submit</button>

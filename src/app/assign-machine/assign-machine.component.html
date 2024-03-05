@@ -1,0 +1,101 @@
+<!------Table---->
+<div class="boundary-box">
+
+    <h3> Assign Machine </h3>
+
+    <div class="row">
+        <div class="col-md-1" style="margin-left: 20px;">
+            <p>TestName:</p>
+        </div>
+
+        <div class="col-md-2">
+
+            <select class="form-control" [(ngModel)]="SelectedTest">
+                <option *ngFor="let test of dropdownData" [ngValue]="test"> {{test.Name}}</option>
+            </select>
+            <!-- <div class="dropdown show" style="position: relative;">
+                <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sodium
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" *ngFor="let option of dropdownData"
+                        (click)="selectTestName(option)">{{option}}</a>
+                </div>
+            </div> -->
+        </div>
+
+        <div class="col-md-1">
+            <p>MachineName:</p>
+        </div>
+
+        <div class="col-md-2 padding-left">
+
+            <select class="form-control" [(ngModel)]="SelectedMachine ">
+                <option *ngFor="let machine of machineName" [ngValue]="machine"> {{machine.Name}}</option>
+            </select>
+
+        </div>
+
+        <div class="col-md-1">
+            <!-- <p>isDefault:</p> -->
+            <label for="id_isDefault">IsDefault:</label>
+        </div>
+
+        <div class="col-md-2">
+            <input type="checkbox" [(ngModel)]="selectedAssignment.isDefault" class="form-check-input zoom-checkbox" name="IsDefault" id="id_isDefault"
+            >
+    
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+        </div>
+
+        <div class="col-md-2 display-flex">
+            <button  type="button" id="assign" class="btn btn-success" style="margin-top: 10px;"
+                (click)="handleAssignButtonClick()">{{isEditing? 'ReAssign' : 'Assign'}}</button>
+            <button type="button" id="assign" class="btn btn-danger" style="margin-top: 10px;">Back</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container mt-5">
+            <table class="table custom-table" style="width: 1200px;">
+                <thead>
+                    <tr>
+                        <th scope="col">S.N.</th>
+                        <th scope="col">Test Name</th>
+                        <th scope="col">Machine Name</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">IsDefault</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let assignment of assignments; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ assignment.testName.Name }}</td>
+                        <td>{{ assignment.machineName.Name }}</td>
+                        <td>{{ assignment.status ? 'Yes' : 'No' }}</td>
+                        <td>{{ assignment.isDefault ? 'Yes' : 'No' }}</td>
+                        <td>
+                            <ng-container *ngIf="assignment.status">
+                                <button style="margin-right: 10px;" (click)="deactivateAssignment(assignment)">Deactivate</button>
+                                <button (click)="editAssignment(assignment,i)">Edit</button>
+                            </ng-container>
+                        
+                            <ng-container *ngIf="!assignment.status">
+                                <button (click)="activateAssignment(assignment)">Activate</button>
+                            </ng-container>
+                        </td>
+                        
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>

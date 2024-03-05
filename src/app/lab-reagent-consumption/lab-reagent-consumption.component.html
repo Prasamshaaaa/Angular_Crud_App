@@ -1,0 +1,181 @@
+<!------Table---->
+<div class="boundary-box">
+
+    <h2> Reagent Consumption Entry </h2>
+
+    <div class="row">
+        <div class="col-md-2" style="margin-left: 20px;">
+            <p >Consumed Date: </p>
+        </div>
+        <div class="col-md-2" >
+            <input style="width:200px" type="date" id = "date" class="form-control" (keyup.enter)="HandleEnterEvent('time')">
+        </div>
+        <div class="col-md-2" >
+            <input style="width:150px; margin-left: 20px;" type="time" id = "time" class="form-control" (keyup.enter)="HandleEnterEvent('cross-btn')">
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <table class="table custom-table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Reagent Name</th>
+                    <th scope="col">code</th>
+                    <th scope="col">Unit</th>
+                    <th scope="col">Consumed Qty</th>
+                    <th scope="col">Consumption Type</th>
+                    <th scope="col">Remarks</th>
+                    <th scope="col">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Your table data goes here -->
+                <tr>
+                    <th scope="row" class="text-center">
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger" id="cross-btn">X</button>
+                        </div>
+                    </th>
+
+                    <td>
+
+                        <div class="dropdown show" style="position: relative;">
+                            <a class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Reagent 1
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" >Reagent 1</a>
+                                <a class="dropdown-item" >Reagent 2</a>
+                                <a class="dropdown-item" >Reagent 3</a>
+                            </div>
+                        </div>
+
+                    </td>
+
+                    <td>001</td>
+                    <td>unit</td>
+                    <td>
+                        <input type="number" class="form-control" (keyup.enter)="HandleEnterEvent('id_remarks')" />
+
+                    </td>
+                    <td>
+
+                        <div class="dropdown show" style="position: relative;">
+                            <a class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Type A
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" >Reagent 1</a>
+                                <a class="dropdown-item" >Reagent 2</a>
+                                <a class="dropdown-item" >Reagent 3</a>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <input type="text" id="id_remarks" class="form-control" placeholder="Textbox......." (keyup.enter)="HandleEnterEvent('id_btn_plus')">
+
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" id="id_btn_plus" class="btn btn-primary" (keyup.enter)="HandleEnterEvent('cross-btn2')">+</button>
+                        </div>
+                    </td>
+
+
+                </tr>
+
+                <tr>
+
+                    <th scope="row" class="text-center">
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger" id="cross-btn2" >X</button>
+                        </div>
+                    <td>
+
+
+                        <div class="dropdown show" style="position: relative;">
+                            <a class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Select Reagent
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item">Reagent 1</a>
+                                <a class="dropdown-item">Reagent 2</a>
+                                <a class="dropdown-item">Reagent 3</a>
+                            </div>
+                        </div>
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="number" class="form-control" placeholder="Enter Quantity" (keyup.enter)="HandleEnterEvent('textbox2')">
+
+                    </td>
+                    <td>
+
+
+                        <div class="dropdown show" style="position: relative;">
+                            <a class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Select
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" >Reagent 1</a>
+                                <a class="dropdown-item" >Reagent 2</a>
+                                <a class="dropdown-item" >Reagent 3</a>
+                            </div>
+                        </div>
+
+                    </td>
+
+                    <td>
+                        <input type="text" class="form-control" placeholder="Textbox......." id="textbox2" (keyup.enter)="HandleEnterEvent('id_btn_plus2')">
+
+                    </td>
+                    <td>
+
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary" id="id_btn_plus2" (keyup.enter)="HandleEnterEvent('inputValue')">+</button>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <label for="inputValue" class="inline-label">Overall Remark:</label>
+        </div>
+        <div class="col-md-3">
+            <input type="text" id="inputValue" class="form-control inline-input" placeholder="Type here">
+        </div>
+
+        <div class="col-md-3">
+
+            <div style="float:right;" class="button-container">
+                <button type="button" class="btn btn-success">Save</button>
+                <button style="margin-left: 10px;" type="button" class="btn btn-danger">Discard</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+<br>
+
+
+<!--------AutoComplete------->
+

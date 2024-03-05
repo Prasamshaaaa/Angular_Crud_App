@@ -1,0 +1,64 @@
+<!-----Shopping Cart View----->
+<div *ngIf = "showCart">
+<h1>Welcome to Prasamsha's Shop</h1>
+
+<div class="product-list">
+    <div *ngFor="let product of products" class="product-item">
+        <h2>{{product.name}}</h2>
+        <img [src]="product.imageUrl" alt="{{ product.name }}" class="product-image">
+        <p>{{product.description}}</p>
+        <p>Price: {{product.price | currency:'USD':'symbol':'1.2-2'}}</p>
+        <div>
+            
+            <label [for]="'quantity' + product.id">Quantity</label>
+            <input [(ngModel)]="product.quantity" type="number" [id]="'quantity' + product.id" name="quantity" value={{product.quantity}} min="1" class="custom-quantity"> <!-----if product.id is 1, the ID becomes 'quantity1'.-->
+            
+        </div>
+    </div>
+</div>
+</div>
+
+<div *ngIf = "showCart" >
+<button (click)="checkout()" class="checkout-button">Checkout</button>
+</div>
+
+<!-----Bill View----->
+<div *ngIf = "!showCart">
+    <div class="container">
+        <div class="content-box">
+    <h1>Thank you for shopping at Prasamsha's Shop</h1>
+
+    <h3>Name:</h3>
+    <hr>
+    <table>
+<thead>
+    <tr>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+</thead>
+
+<tbody>
+
+    <tr *ngFor="let item of billItems">
+    <td>{{item.productName}}</td>
+    <td>{{item.quantity | currency:'USD':'symbol':'1.2-2'}}</td>
+    <td>{{item.price}}</td>
+
+</tr>
+
+</tbody>
+
+
+    </table>
+<hr>
+
+<input type="number" [(ngModel)]="discount" placeholder="Enter discount percentage">
+<p>Total Amount: {{ calculateTotalAmountWithDiscount() | currency:'USD':'symbol':'1.2-2' }}</p>
+
+
+        </div>
+    </div>
+
+</div>

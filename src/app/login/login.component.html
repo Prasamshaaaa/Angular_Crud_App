@@ -1,0 +1,32 @@
+<form *ngIf = "!isLoggedIn" [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="max-width: 300px; margin: auto;">
+    <div style="margin-bottom: 10px;">
+      <label for="username">Username:</label>
+      <input type="text" id="username" formControlName="username" style="width: 100%; padding: 5px;">
+    </div>
+  
+    <span style="font-size: smaller; color: red; display: block; margin-bottom: 10px;" *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].errors['required']">
+      Username is required.
+    </span>
+  
+    <div style="margin-bottom: 10px;">
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" style="width: 100%; padding: 5px;">
+    </div>
+  
+    <span style="font-size: smaller; color: red; display: block; margin-bottom: 10px;" *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].errors['required']">
+      Password is required.
+    </span>
+
+    <div style="margin-bottom: 10px;">
+      <label for="birthdate">Birthdate:</label>
+      <input type="date" id="birthdate" formControlName="birthdate" style="width: 100%; padding: 5px;">
+    </div>
+  
+    <div>
+      <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px; border: none; cursor: pointer; width: 100%;">
+        Login
+      </button>
+    </div>
+  </form>
+
+

@@ -1,0 +1,33 @@
+<h1>Checkbox</h1>
+
+<div>
+    <input type="checkbox" id = "selectall" [(ngModel)]="selectAll" (change)="selectAllItems()"> <label for = "selectall">Select All</label> 
+  </div>
+  
+  <hr>
+  <div *ngFor="let data of datas">
+    <input type="checkbox" [id]="'employeeid-' + data.employeeid" [(ngModel)]="data.selected" (change)="updateSelection(data)">
+    <label [for]="'employeeid-' + data.employeeid">{{ data.name }}</label>
+</div>
+
+  <h2>Selected Employees:</h2>
+  <table class = "employee-table">
+    <thead>
+        <tr>
+           <th>S.N.</th>
+            <th>Name</th>
+            <th>ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of selectedEmployees; let i = index;">
+            <td>{{i+1}}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.employeeid }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+  

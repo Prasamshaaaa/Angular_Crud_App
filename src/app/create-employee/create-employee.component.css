@@ -1,0 +1,9 @@
+.update-snackbar {
+    background-color: green;
+    color: white;
+}
+
+.add-snackbar {
+    background-color: yellow !important;
+    color: white;
+}

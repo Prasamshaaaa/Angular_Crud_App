@@ -1,0 +1,36 @@
+
+<h2> Please fill the below form for further Processing</h2>
+
+<mat-form-field class = "custom-width">
+  <mat-label>Your Name</mat-label>
+  <input matInput [(ngModel)]="formData.name">
+</mat-form-field>
+<mat-form-field class = "custom-width">
+  <mat-label>Choose your field of Interest</mat-label>
+  <mat-select [(ngModel)]="formData.fieldofInterest">
+    <mat-option value="one">Software Engineering</mat-option>
+    <mat-option value="two">Machine Learning Engineer </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field class = "custom-width">
+  <mat-label>Please tell Us why you are interested in working with us</mat-label>
+  <textarea matInput [(ngModel)]="formData.reasonForInterest"></textarea>
+</mat-form-field>
+
+<button mat-button style="color:white; background-color: blue;" (click)="onSubmit()">Submit</button>
+<br>
+
+<div>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Field of Interest</th>
+    <th>Reason for Interest</th>
+  </tr>
+  <tr *ngFor="let submission of formSubmission">
+    <td>{{ submission.name }}</td>
+    <td>{{ submission.fieldofInterest }}</td>
+    <td>{{ submission.reasonForInterest }}</td>
+  </tr>
+</table>
+</div>
